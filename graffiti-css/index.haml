@@ -1,0 +1,7 @@
+%link{href: 'http://fonts.googleapis.com/css?family=Erica+One', rel: 'stylesheet', type: 'text/css'}
+
+- "Hello Julia".split("").each do |i|
+  - if i != " "
+    %span{class: "l" + i.downcase}<> #{i}
+  - else
+    %span{class: "√"} &nbsp;

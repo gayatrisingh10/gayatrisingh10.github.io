@@ -1,0 +1,38 @@
+@function longshadow($color, $depth)
+  $val: 0px 0px $color
+  @for $i from 1 through $depth
+    $val: #{$val}, #{$i}px #{$i}px $color
+  @return $val
+
+@mixin glypshadow($color, $depth: 20)
+  text-shadow: longshadow($color, $depth)
+
+body
+  background-color: lighten(#0D161A, 2%)
+  text-align: center
+  margin: 50px auto
+  font-size: 100%
+
+.√
+  font-size: 10em
+  
+[class^=l]
+  display: inline-block
+  color: #9FD8CF
+  font-size: 10em
+  //font-weight: 900
+  font-family: 'Erica One', cursive, sans-serif
+  letter-spacing: -0.02em
+  position: relative
+  
+$letters: a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z
+
+@each $letter in $letters
+  span[class$="#{$letter}"]
+    $deg: random(50) - 25 + deg
+    $zindex: random(128)
+    z-index: $zindex
+    font-size: random(10) + 6 + em
+    +glypshadow(#127D82, random(15) + 15)
+    transform: perspective(120px) rotateX($deg) rotateY(random(50) - 25 + deg) translateY(0)
+    transform-style: preserve-3d 
